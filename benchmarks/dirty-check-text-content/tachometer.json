@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Polymer/tachometer/master/config.schema.json",
+  "sampleSize": 50,
+  "timeout": 3,
+  "benchmarks": [
+    {
+      "measurement": {
+        "mode": "performance",
+        "entryName": "result"
+      },
+      "expand": [
+        {
+          "name": "always-set",
+          "url": "./index.html?benchmark=always-set",
+          "expand": [
+            {
+            "browser": "chrome"
+            },
+            {
+              "browser": "safari"
+            },
+            {
+              "browser": "firefox"
+            }
+          ]
+        },
+        {
+          "name": "check-set",
+          "url": "./index.html?benchmark=check-set",
+          "expand": [
+            {
+            "browser": "chrome"
+            },
+            {
+              "browser": "safari"
+            },
+                    {
+              "browser": "firefox"
+            }
+          ]
+        },
+        {
+          "name": "dirty-check",
+          "url": "./index.html?benchmark=dirty-check",
+          "expand": [
+            {
+            "browser": "chrome"
+            },
+            {
+              "browser": "safari"
+            },
+                    {
+              "browser": "firefox"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "type": "module",
+  "scripts": {
+    "build": "wireit",
+    "start": "wireit",
+    "serve": "wireit",
+    "bench:dirty-check-attributes": "wireit",
+    "bench:dirty-check-text-content": "wireit"
+  },
+  "wireit": {
+    "build": {
+      "command": "tsc --pretty",
+      "files": [
+        "src/**/*.ts"
+      ],
+      "output": [
+        "benchmarks/**/*.{js|js.map|d.ts|d.ts.map}"
+      ],
+      "clean": "if-file-deleted"
+    },
+    "start": {
+      "dependencies": [
+        "bench:dirty-check-attributes",
+        "bench:dirty-check-text-content"
+      ]
+    },
+    "serve": {
+      "command": "wds --node-resolve",
+      "service": true
+    },
+    "bench:dirty-check-attributes": {
+      "command": "tach --config ./benchmarks/dirty-check-attributes/tachometer.json",
+      "files": [
+        "benchmarks/dirty-check-attributes/tachometer.json"
+      ],
+      "dependencies": [
+        "serve",
+        "build"
+      ]
+    },
+    "bench:dirty-check-text-content": {
+      "command": "tach --config ./dirty-check-text-content/tachometer.json",
+      "files": [
+        "dirty-check-text-content/tachometer.json"
+      ],
+      "dependencies": [
+        "serve",
+        "build"
+      ]
+    }
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "wireit": "^0.14.1"
+  },
+  "dependencies": {
+    "@web/dev-server": "^0.3.6",
+    "tachometer": "^0.7.0",
+    "chromedriver": "*"
+  }
+}

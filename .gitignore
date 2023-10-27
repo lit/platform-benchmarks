@@ -1,0 +1,6 @@
+/node_modules/
+/.wireit/
+/benchmarks/**/*.js
+/benchmarks/**/*.js.map
+/benchmarks/**/*.d.ts
+/benchmarks/**/*.d.ts.map
